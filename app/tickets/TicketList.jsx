@@ -2,10 +2,8 @@ import React from 'react'
 import Link from "next/link"
 
 async function getTickets() {
-    // imitate delay
-    await new Promise(resolve => setTimeout(resolve, 3000))
     // fetch data
-    const res = await fetch('http://localhost:4000/tickets', {
+    const res = await fetch('https://jsonplaceholder.typicode.com/users', {
         next: {
             revalidate: 0 // never cache
         }
@@ -20,12 +18,12 @@ export default async function TicketList() {
         <>
           {tickets.map((ticket) => (
             <div key={ticket.id} className="card my-5">
-              <Link href={`/tickets/${ticket.id}`}>
-                <h3>{ticket.title}</h3>
-                <p>{ticket.body.slice(0, 200)}...</p>
-                <div className={`pill ${ticket.priority}`}>
+              <Link href={`/tickets/${ticket.id.toString()}`}>
+                <h3>{ticket.name}</h3>
+                {/* <p>{ticket.body.slice(0, 200)}...</p> */}
+                {/* <div className={`pill ${ticket.priority}`}>
                   {ticket.priority} priority
-                </div>
+                </div> */}
               </Link>
             </div>
           ))}
