@@ -3,7 +3,7 @@ import './globals.css'
 import { Rubik } from 'next/font/google'
 const rubik = Rubik({ subsets: ['latin'] })
 // components
-import Navbar from './components/navbar'
+import Navbar from './components/Navbar'
 
 export const metadata = {
   title: 'Create Next App',
